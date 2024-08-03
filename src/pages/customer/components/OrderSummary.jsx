@@ -93,7 +93,8 @@ const OrderSummary = ({ handleNext, handleBack }) => {
                         <ListItem sx={{ py: 1, px: 0 }}>
                             <ListItemText primary="Discount" />
                             <Typography variant="subtitle1" sx={{ color: "green" }}>
-                                ₹{totalamount - totalNewPrice}
+                                ₹{totalOGPrice - totalNewPrice} 
+                                {/* REPLACE 'totalamount' With 'totalOGPrice'  */}
                             </Typography>
                         </ListItem>
                         <ListItem sx={{ py: 1, px: 0 }}>

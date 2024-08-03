@@ -7,16 +7,18 @@ import { BasicButton } from '../utils/buttonStyles';
 import { useNavigate } from 'react-router-dom';
 import Popup from './Popup';
 import { addStuff } from '../redux/userHandle';
+import { productDataList } from '../utils/products';
 
 const Products = ({}) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const itemsPerPage = 9;
 
   const { currentRole, responseSearch } = useSelector();
   const [currentPage, setCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("You have to login or register first");
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem + itemsPerPage;
@@ -35,8 +37,12 @@ const Products = ({}) => {
 
   const messageHandler = (event) => {
     event.stopPropagation();
-    setMessage("You have to login or register first")
+    setMessage(message)
     setShowPopup(true)
+  };
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
   };
 
   if (!responseSearch) {
@@ -86,14 +92,14 @@ const Products = ({}) => {
 
       <Container sx={{ mt: 10, mb: 10, display: "flex", justifyContent: 'center', alignItems: "center" }}>
         <Pagination
-          count={Math.ceil(productData.length / itemsPerPage)}
+          count={Math.ceil(productDataList.length / itemsPerPage)}
           page={currentPage}
           color="secondary"
-
+          onChange={handlePageChange}
         />
       </Container>
 
-      <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
+      <Popup message={messageHandler} setShowPopup={setShowPopup} showPopup={showPopup} />
     </>
   )
 };

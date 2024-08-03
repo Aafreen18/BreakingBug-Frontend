@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import {Table, TableBody, TableCell, TableContainer, TableRow, styled} from '@mui/material';
+import {Table, TableBody, TableContainer, TableRow, styled, tableCellClasses} from '@mui/material';
+//import {ButtonHaver} from './ButtonHaver';
 
 const TableTemplate = ({columns, rows}) => {
   const [page, setPage] = useState(0);
@@ -23,24 +24,24 @@ const TableTemplate = ({columns, rows}) => {
           </StyledTableRow>
           <TableBody>
             {rows
-              .slice(page * rowsPerPage, page == rowsPerPage + rowsPerPage)
+              .slice(page * rowsPerPage, page === rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
                   <StyledTableRow hover role="checkbox" tabIndex={+1} key={row.Id}>
                     {columns.map((column) => {
-                      const value = row[column.id];
+                      const value = row[column.id];//CORRECTED NAME OF PROPS
                       return (
                         <StyledTableCell key={column.Id} align={column.align}>
                           {
                             column.format && typeof value === 'number'
-                              ? column.format(id)
+                              ? column.format(column.Id)
                               : value
                           }
                         </StyledTableCell>
                       );
                     })}
                     <StyledTableCell align="center">
-                      <ButtonHaver row={row}/>
+                      {/* <ButtonHaver row={row}/> */}
                     </StyledTableCell>
                   </StyledTableRow>
                 );
@@ -64,7 +65,7 @@ const TableTemplate = ({columns, rows}) => {
 
 export default TableTemplate
 
-const StyledTableCell = styled(TableCell)(({theme}) => ({
+const StyledTableCell = styled(tableCellClasses)(({theme}) => ({// CORRECTED NAME OF PROPS
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,

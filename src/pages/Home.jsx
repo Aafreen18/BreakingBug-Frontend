@@ -7,14 +7,14 @@ import { getProducts } from '../redux/userHandle';
 import ProductsMenu from './customer/components/ProductsMenu';
 import { NewtonsCradle } from '@uiball/loaders';
 import { Link } from 'react-router-dom';
+import { productDataList } from '../utils/products';
 
 const Home = () => {
-  const adURL =
-    'https://rukminim1.flixcart.com/flap/464/708/image/1f03e99f6dc9f7a6.jpg?q=70';
+  const adURL = 'https://rukminim1.flixcart.com/flap/464/708/image/1f03e99f6dc9f7a6.jpg?q=70';
 
   const dispatch = useDispatch();
 
-  const { productData, responseProducts, error } = useSelector((state) => state.user);
+  const { responseProducts, error } = useSelector((state) => state.user);
 
   const [showNetworkError, setShowNetworkError] = useState(false);
 
@@ -74,7 +74,7 @@ const Home = () => {
             <>
               <Component>
                 <LeftComponent>
-                  <Slide products={productData} title="Top Selection" />
+                  <Slide products={productDataList} title="Top Selection" />
                 </LeftComponent>
 
                 <RightComponent>
@@ -82,10 +82,11 @@ const Home = () => {
                 </RightComponent>
               </Component>
 
-              <Slide products={productData} title="Deals of the Day" />
-              <Slide products={productData} title="Suggested Items" />
-              <Slide products={productData} title="Discounts for You" />
-              <Slide products={productData} title="Recommended Items" />
+              {/* NAME OF FUNCTION IS CHANGED */}
+              <Slide products={productDataList} title="Deals of the Day" />
+              <Slide products={productDataList} title="Suggested Items" />
+              <Slide products={productDataList} title="Discounts for You" />
+              <Slide products={productDataList} title="Recommended Items" />
             </>
           )}
         </>

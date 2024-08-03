@@ -1,6 +1,6 @@
 import { Divider, Box, Typography, Button, styled, Container } from '@mui/material';
-
-import { Link, useNavigate } from 'react-router';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';// CORRECTED FILE NAME
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 
@@ -125,3 +125,4 @@ const TextContainer = styled(Container)`
     align-items: center;
     margin: 8px;
 `;
+

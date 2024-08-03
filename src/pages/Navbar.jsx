@@ -38,7 +38,7 @@ const Navbar = () => {
             console.log(currentUser);
             dispatch(updateCustomer(currentUser, currentUser._id));
         }
-    }, [currentRole, currentUser, dispatch, ancorElNav])
+    }, [currentRole, currentUser, dispatch])//REMOVE anchorElvNav
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -48,14 +48,15 @@ const Navbar = () => {
     const openSign = Boolean(anchorElSign);
 
     const [isCartOpen, setIsCartOpen] = React.useState(false);
+    const [isCartClose, setIsCartClose] = React.useState(false);
 
     // Cart
-    const handleOpen Cart = () => {
+    const handleOpenCart = () => {// function name is corrected
         setIsCartOpen(true);
     };
 
-    const handleOpenCart = () => {
-        setIsCartOpen(false);
+    const handleCloseCart = () => {// function name is corrected
+        setIsCartClose(true);
     };
 
     // Navigation Menu

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
-import { underControl } from '../redux/userHandle';
+// import { useDispatch } from 'react-redux';
+// import { underControl } from '../redux/userHandle';//IMPORTING SOMETHING THAT DOES NOT DEFINED
 import MuiAlert from '@mui/material/Alert';
 import { Snackbar } from '@mui/material';
 
 const Popup = ({ message, setShowPopup, showPopup }) => {
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
 
     const vertical = "top"
     const horizontal = "right"
@@ -15,7 +15,7 @@ const Popup = ({ message, setShowPopup, showPopup }) => {
             return;
         }
         setShowPopup(true);
-        dispatch(underControl())
+        //dispatch(underControl())
     };
 
     return (

@@ -170,9 +170,26 @@ const userSlice = createSlice({
         },
 
         isTokenValid: (state) => {
-            const decodedToken = jwtDecode(state.currentToken);
-            if (state.currentToken) {              state.isLoggedIn = true;
-            } else {
+            // Check if the token exists
+            if (!state.currentToken) {
+                localStorage.removeItem('user');
+                state.currentUser = null;
+                state.currentRole = null;
+                state.currentToken = null;
+                state.status = 'idle';
+                state.response = null;
+                state.error = null;
+                state.isLoggedIn = false;
+                return; // Exit early if there's no token
+            }
+        
+            try {
+                // Attempt to decode the token
+                jwtDecode(state.currentToken);
+                // If decoding succeeds, assume the token is valid
+                state.isLoggedIn = true;
+            } catch (error) {
+                // Handle invalid tokens by clearing user data
                 localStorage.removeItem('user');
                 state.currentUser = null;
                 state.currentRole = null;
@@ -183,6 +200,8 @@ const userSlice = createSlice({
                 state.isLoggedIn = false;
             }
         },
+        
+        
 
         getRequest: (state) => {
             state.loading = true;
@@ -311,6 +330,9 @@ export const {
     removeAllFromCart,
     fetchProductDetailsFromCart,
     updateCurrentUser,
+    getCustomersListFailed,// ADDED THIS
+    setFilteredProducts,// ADDED THIS 
+    
     
 } = userSlice.actions;
 

@@ -31,7 +31,7 @@ export const authUser = (fields, role, mode) => async (dispatch) => {
 
     try {
         const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/${role}${mode}`, fields, {
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' }
         });
         if (result.data.role) {
             dispatch(authSuccess(result.data));
@@ -49,7 +49,7 @@ export const addStuff = (address, fields) => async (dispatch) => {
 
     try {
         const result = await axios.post(`${process.env.REACT_APP_BASE_URL}/${address}`, fields, {
-            headers: { 'Content-Type': 'application/json' },---
+            headers: { 'Content-Type': 'application/json' },
         });
 
         if (result.data.message) {
@@ -98,17 +98,14 @@ export const deleteStuff = (id, address) => async (dispatch) => {
 export const updateCustomer = (fields, id) => async (dispatch) => {
     dispatch(updateCurrentUser(fields));
     await axios.put(`${process.env.REACT_APP_BASE_URL}/CustomerUpdate/${id}`, fields);
-};
 
+
+    try {
         dispatch(stuffUpdated());
-
-      } catch (error) {
-
+    } catch (error) {
         dispatch(getError(error));
-
     }
-
-    }
+};
 
 export const getProductsbySeller = (id) => async (dispatch) => {
     dispatch(getRequest());
@@ -159,7 +156,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     }
 }
 
-export const getCustomers = (id) => async (dispatch) => {
+export const getCustomers = (id, address) => async (dispatch) => {//ADD ADDRESS AS PROPS
     dispatch(getRequest());
 
     try {
