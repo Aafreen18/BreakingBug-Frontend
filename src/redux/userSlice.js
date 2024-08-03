@@ -332,6 +332,7 @@ export const {
     updateCurrentUser,
     getCustomersListFailed,// ADDED THIS
     setFilteredProducts,// ADDED THIS 
+    specificProductData,
     
     
 } = userSlice.actions;

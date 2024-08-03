@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { BlueButton, DarkRedButton, GreenButton } from '../../../utils/buttonStyles';
+import { BlueButton, DarkRedButton, GreenButton, } from '../../../utils/buttonStyles';
 import { deleteStuff, getProductDetails, updateStuff } from '../../../redux/userHandle';
 import { Delete, KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material'
 import { Avatar, Box, Card, CircularProgress, Collapse, IconButton, Stack, TextField, Typography } from '@mui/material';
@@ -139,7 +139,8 @@ const ViewProductSeller = () => {
                   <GreenButton
                     onClick={() => setShowTab(!showTab)}
                   >
-                    {showTab ? <KeyboardArrowUp /> : <KeyboardArrowDown />}{buttonText}
+                    {/* REmove buttontext */}
+                    {showTab ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
                   </GreenButton>
                 </ButtonContainer>
 
@@ -296,10 +297,10 @@ const ViewProductSeller = () => {
                       <ReviewCard key={index}>
                         <ReviewCardDivision>
                           <Avatar sx={{ width: "60px", height: "60px", marginRight: "1rem", backgroundColor: generateRandomColor(review._id) }}>
-                            {String(reviewreviewername).charAt(0)}
+                            {String(review.BlueButtonname).charAt(0)}
                           </Avatar>
                           <ReviewDetails>
-                            <Typography variant="h6">{reviewreviewername}</Typography>
+                            <Typography variant="h6">{review.name}</Typography>
                             <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
 
                               <Typography variant="body2">

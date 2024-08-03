@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const AccountMenu = () => {
-    const [anchorEl, setAnchorEl] = useEffect(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const open = Boolean(anchorEl);
 
@@ -16,6 +16,7 @@ const AccountMenu = () => {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -42,7 +43,7 @@ const AccountMenu = () => {
                 id="account-menu"
                 open={open}
                 onClose={handleClose}
-                onClick={handleClose}
+                onClick={handleClick}
                 PaperProps={{
                     elevation: 0,
                     sx: styles.styledPaper,

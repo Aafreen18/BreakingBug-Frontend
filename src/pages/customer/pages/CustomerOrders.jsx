@@ -12,12 +12,13 @@ import Grid from '@mui/material/Unstable_Grid2';
 import ProductCard from '../components/ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpecificProducts } from '../../../redux/userHandle';
+import {specificProductData} from '../../../redux/userSlice';// IMPORT SPECIFICPRODUCTDATA COMPONENT
 
 const CustomerOrders = () => {
 
     const dispatch = useDispatch()
 
-    const { currentUser, loading, responseSpecificProducts } = useSelector(state => state.user);
+    const { loading, responseSpecificProducts } = useSelector(state => state.user);//REMOVE CURRENTUSER
 
     useEffect(() => {
         dispatch(getSpecificProducts("getOrderedProductsByCustomer"));
